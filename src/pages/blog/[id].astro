@@ -1,0 +1,18 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const words = post.body?.split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.ceil(words / 220));
+---
+
+<BaseLayout title={`${post.data.title} · Haotian Chen`} description={post.data.description}>
+  <header class="page-hero"><div class="narrow"><p class="eyebrow">Technical note</p><h1>{post.data.title}</h1><p class="lede">{post.data.description}</p><div class="meta-row"><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en', { dateStyle: 'long' })}</time><span>{readingTime} min read</span>{post.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}</div></div></header>
+  <article class="narrow page prose">{post.data.demo && <div class="notice"><strong>Formatting demo:</strong> this is an example article, not a research publication.</div>}{headings.length > 1 && <nav aria-label="Table of contents" class="notice"><strong>On this page</strong><ul>{headings.filter((h) => h.depth === 2).map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></nav>}<Content /></article>
+</BaseLayout>

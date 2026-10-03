@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haotian-chen-research.haotianchen06.chatgpt.site/sitemap-index.xml

@@ -1,0 +1,26 @@
+---
+title: How I Structure an Agent Evaluation Note
+description: A short demonstration of headings, equations, code, figures, and evidence-oriented writing on this site.
+date: 2026-10-03
+tags: [Demo, Evaluation, LLM Agents]
+demo: true
+---
+
+## Start with the estimand
+
+Before choosing a metric, state what the experiment is meant to estimate. For example, an average over all events can answer a different question from an average that gives each agent equal weight.
+
+## Keep controls structurally relevant
+
+A useful control preserves the properties that could explain the observed gain. In pseudocode:
+
+```python
+for seed in paired_seeds:
+    baseline = evaluate(policy="reference", seed=seed)
+    candidate = evaluate(policy="candidate", seed=seed)
+    paired_differences.append(candidate - baseline)
+```
+
+## Report what the evidence does not establish
+
+An evaluation note should distinguish a measured property from broader claims. A replay check may establish deterministic reconstruction under a defined journal contract; it does not by itself establish fairness or human realism.

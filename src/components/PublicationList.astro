@@ -1,0 +1,20 @@
+---
+import { publications } from '../data/site';
+interface Props { limit?: number; }
+const { limit } = Astro.props;
+const items = typeof limit === 'number' ? publications.slice(0, limit) : publications;
+---
+
+<div class="pub-list">
+  {items.map((paper) => (
+    <article class="publication">
+      <div class="pub-year">{paper.year}</div>
+      <div>
+        <h3><a href={paper.href} target="_blank" rel="noreferrer">{paper.title}</a></h3>
+        <p class="pub-authors">{paper.authors}</p>
+        <p class="pub-summary">{paper.summary}</p>
+      </div>
+      <div class="pub-meta"><strong>{paper.note}</strong>{paper.venue}</div>
+    </article>
+  ))}
+</div>

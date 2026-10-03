@@ -1,0 +1,32 @@
+---
+const path = Astro.url.pathname;
+const items = [
+  ['Home', '/'],
+  ['Research', '/research/'],
+  ['Projects', '/projects/'],
+  ['Blog', '/blog/'],
+  ['CV', '/cv/'],
+] as const;
+---
+
+<header class="site-header">
+  <nav class="shell nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Haotian Chen</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+    <div class="nav-links" id="site-menu" data-open="false">
+      {items.map(([label, href]) => (
+        <a href={href} aria-current={path === href || (href !== '/' && path.startsWith(href)) ? 'page' : undefined}>{label}</a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#site-menu');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    if (menu) menu.dataset.open = String(!open);
+  });
+</script>

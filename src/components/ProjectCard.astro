@@ -1,0 +1,20 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  tags: string[];
+  date: Date;
+}
+const { id, title, description, status, tags, date } = Astro.props;
+const mark = title.split(' ').filter(Boolean).slice(0, 2).map((word) => word[0]).join('').toUpperCase();
+---
+
+<a class="project-card" href={`/projects/${id}/`}>
+  <div class="project-top"><span>{status}</span><time datetime={date.toISOString()}>{date.getFullYear()}</time></div>
+  <div class="project-mark" aria-hidden="true">{mark}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <div class="tags">{tags.slice(0, 3).map((tag) => <span class="tag">{tag}</span>)}</div>
+</a>

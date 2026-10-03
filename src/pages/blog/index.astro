@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog · Haotian Chen" description="Technical notes by Haotian Chen.">
+  <header class="page-hero"><div class="shell"><p class="eyebrow">Blog</p><h1>Technical notes.</h1><p class="lede">A place for research notes, implementation details, and careful write-ups of ideas in progress.</p></div></header>
+  <section class="page"><div class="narrow pub-list">{posts.map((post) => <article class="publication" style="grid-template-columns:110px 1fr"><time class="pub-year" datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en', { month: 'short', year: 'numeric' })}</time><div><h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3><p class="pub-summary">{post.data.description}</p><div class="meta-row">{post.data.demo && <span class="tag">Demo post</span>}{post.data.tags.map((tag) => <span>{tag}</span>)}</div></div></article>)}</div></section>
+</BaseLayout>

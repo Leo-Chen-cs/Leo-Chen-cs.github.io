@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationList from '../components/PublicationList.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { profile, researchAreas } from '../data/site';
+
+const projects = (await getCollection('projects')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">Researcher · AI systems</p>
+        <h1 class="hero-name">{profile.name}</h1>
+        <p class="hero-role">{profile.role}</p>
+        <p class="hero-institution">{profile.institution}</p>
+        <p class="lede hero-copy">{profile.intro}</p>
+        <div class="button-row">
+          <a class="button primary" href="/cv/">View CV</a>
+          <a class="button" href={`mailto:${profile.email}`}>Email</a>
+          <span class="button muted" aria-label="GitHub link not added yet">GitHub · add link</span>
+        </div>
+        <div class="focus-list" aria-label="Research interests">
+          <span>LLM Agents</span><span>Memory</span><span>Social Simulation</span><span>3D Intelligence</span>
+        </div>
+      </div>
+      <figure class="portrait-frame">
+        <img src="/images/haotian-chen.jpg" alt="Portrait of Haotian Chen" width="591" height="827" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="band white" id="research">
+    <div class="shell">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">Research agenda</p><h2>Questions I work on</h2></div>
+        <p>From agent memory to executable environments, I study how intelligent systems can remain coherent, grounded, and testable over time.</p>
+      </div>
+      <div class="area-grid">
+        {researchAreas.map((area) => (
+          <article class="area-card"><span class="number">{area.index}</span><h3>{area.title}</h3><p>{area.description}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">Selected work</p><h2>Publications</h2></div>
+        <a class="text-link" href="/research/">Research details</a>
+      </div>
+      <PublicationList />
+    </div>
+  </section>
+
+  <section class="band white">
+    <div class="shell">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">In progress</p><h2>Selected projects</h2></div>
+        <a class="text-link" href="/projects/">All projects</a>
+      </div>
+      <div class="project-grid">
+        {projects.map((project) => <ProjectCard id={project.id} {...project.data} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell content-grid">
+      <div><p class="side-label">Experience</p></div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <time>Jul 2024 — Apr 2025</time>
+          <h3>Research Intern · Institute for AI Industry Research, Tsinghua University</h3>
+          <p>Worked on research in computer vision and artificial intelligence, including robot target recognition and autonomous navigation.</p>
+        </article>
+        <article class="timeline-item">
+          <time>Jul 2024 — Aug 2024</time>
+          <h3>Software Development Intern · ZTE, Chengdu</h3>
+          <p>Developed an automated kernel-configuration inspection tool for the operating-system product team.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+title: LLM-driven Social Simulation
+description: Designing executable environments that turn generated social actions into consistent and replayable world-state transitions.
+date: 2026-10-01
+status: Active research
+tags: [LLM Agents, Social Simulation, Evaluation]
+paperUrl: https://arxiv.org/abs/2610.01138
+---
+
+## Overview
+
+This line of work asks how concurrent agent actions should settle when several individually valid proposals interact with the same world state.
+
+## Motivation
+
+Natural-language plausibility is not enough for a simulation. The environment must define what happened, preserve constraints, make progress measurable, and support exact replay.
+
+## Method
+
+The current implementation uses typed snapshots and explicit settlement policies. Audits separate order sensitivity, useful progress, and replay consistency so that different failure modes remain visible.
+
+## Results
+
+The first public audit evaluates five settlement policies through exhaustive permutation trials and scripted multistep episodes. See the linked paper for the complete experimental protocol and reported results.

@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const links = [
+  project.data.paperUrl && ['Paper', project.data.paperUrl],
+  project.data.codeUrl && ['Code', project.data.codeUrl],
+  project.data.projectUrl && ['Project page', project.data.projectUrl],
+].filter(Boolean) as [string, string][];
+---
+
+<BaseLayout title={`${project.data.title} · Haotian Chen`} description={project.data.description}>
+  <header class="page-hero"><div class="narrow"><p class="eyebrow">{project.data.status}</p><h1>{project.data.title}</h1><p class="lede">{project.data.description}</p><div class="meta-row"><time datetime={project.data.date.toISOString()}>{project.data.date.getFullYear()}</time>{project.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}</div>{links.length > 0 && <div class="button-row" style="margin-top:1.5rem">{links.map(([label, url]) => <a class="button" href={url} target="_blank" rel="noreferrer">{label}</a>)}</div>}</div></header>
+  <article class="narrow page prose"><Content /></article>
+</BaseLayout>

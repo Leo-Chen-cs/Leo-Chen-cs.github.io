@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+const projects = (await getCollection('projects')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Projects · Haotian Chen" description="Research projects by Haotian Chen across agent memory, social simulation, and 3D intelligence.">
+  <header class="page-hero"><div class="shell"><p class="eyebrow">Projects</p><h1>Research in motion.</h1><p class="lede">Ongoing directions and systems work. Entries distinguish confirmed results from open questions and planned evaluation.</p></div></header>
+  <section class="page"><div class="shell project-grid">{projects.map((project) => <ProjectCard id={project.id} {...project.data} />)}</div></section>
+</BaseLayout>
