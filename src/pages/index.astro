@@ -1,62 +1,57 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationList from '../components/PublicationList.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import { profile, researchAreas } from '../data/site';
 
-const projects = (await getCollection('projects')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const updates = [
+  { date: 'Oct 2026', text: 'Released two new studies on evaluation design and action settlement in intelligent-agent environments.' },
+  { date: '2026', text: 'Joining the University of Science and Technology of China for an M.S. in Cyberspace Security.' },
+  { date: '2025', text: 'DPNet was published in IEEE Internet of Things Journal.' },
+];
 ---
 
 <BaseLayout>
-  <div class="site-shell home">
-    <section class="home-top">
-      <aside class="profile-block">
-        <img class="profile-avatar" src="/images/haotian-chen-life.jpg" alt="Portrait of Haotian Chen" width="900" height="900" />
-        <div class="profile-name"><h1>{profile.name}</h1><span class="cn-name">陈皓天</span></div>
-        <p class="profile-role">{profile.role}<br />{profile.institution}</p>
-        <div class="contact-block">
-          <a class="contact-link" href={`mailto:${profile.email}`}>Email</a>
-          <a class="contact-link" href="/cv/haotian-chen-cv.pdf" download>Curriculum Vitae</a>
-          <a class="contact-link" href="https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+Haotian" target="_blank" rel="noreferrer">arXiv profile</a>
-          <span class="contact-link muted">GitHub · add link</span>
+  <div class="site-shell home academic-home">
+    <section class="academic-hero">
+      <div class="portrait-wrap"><img class="hero-portrait" src="/images/haotian-chen-life.jpg" alt="Portrait of Haotian Chen" width="900" height="900" /></div>
+      <div class="hero-copy">
+        <p class="eyebrow">LLM Agents · Reliable AI · Computer Vision</p>
+        <div class="hero-name"><h1>{profile.name}</h1><span>陈皓天</span></div>
+        <p class="hero-role">Incoming M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>.</p>
+        <p class="hero-bio">I study how intelligent agents can remember, act, and remain auditable in complex environments. My current interests span reliable LLM-agent evaluation, long-term memory and personalization, social simulation, and embodied intelligence.</p>
+        <p class="hero-bio">Previously, I studied Computer Science at <strong>Southwest Jiaotong University</strong>, conducted research at <strong>Tsinghua AIR</strong>, and worked with the operating-system product team at <strong>ZTE</strong>.</p>
+        <div class="hero-links" aria-label="Profile links">
+          <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+          <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={profile.links.arxiv} target="_blank" rel="noreferrer">arXiv</a>
+          <a href="/cv/haotian-chen-cv.pdf" download>CV</a>
+          <a href={`mailto:${profile.email}`}>Email</a>
         </div>
-        <p class="profile-note">Agents should not only sound plausible — they should remember, act, and remain auditable.</p>
-      </aside>
-
-      <div class="about-section">
-        <h2>About</h2>
-        <p>I am an M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>. My work sits at the intersection of large language model agents, memory systems, social simulation, and embodied intelligence.</p>
-        <p>{profile.intro}</p>
-        <p>Previously, I studied Computer Science and Technology at <strong>Southwest Jiaotong University</strong>. I also collaborated with the <strong>Institute for AI Industry Research (AIR), Tsinghua University</strong> as a research intern and worked with the operating-system product team at <strong>ZTE</strong>.</p>
-        <p class="interests-label">Research interests</p>
-        <ul class="interest-list">
-          <li><strong>LLM agents</strong> — execution semantics, evaluation, and reliable interaction</li>
-          <li><strong>Memory & personalization</strong> — selective retrieval, updating, and behavioral consistency</li>
-          <li><strong>Social simulation</strong> — grounded actions and traceable world-state transitions</li>
-          <li><strong>3D intelligence</strong> — multimodal understanding, generation, and spatial evaluation</li>
-        </ul>
       </div>
     </section>
 
-    <section class="divided-section" id="research">
-      <div class="section-head"><h2>Research <span class="count">04</span></h2><a class="text-link" href="/research/">View research page</a></div>
-      <div class="area-grid">{researchAreas.map((area) => <article class="area-card"><span class="number">{area.index}</span><h3>{area.title}</h3><p>{area.description}</p></article>)}</div>
+    <section class="home-section news-section">
+      <div class="section-label"><span>01</span><h2>News</h2></div>
+      <div class="news-list">{updates.map((update) => <article><time>{update.date}</time><p>{update.text}</p></article>)}</div>
     </section>
 
-    <section class="divided-section">
-      <div class="section-head"><h2>Publications <span class="count">04</span></h2><span>Selected research outputs</span></div>
-      <PublicationList />
+    <section class="home-section research-section" id="research">
+      <div class="section-label"><span>02</span><h2>Research</h2></div>
+      <div>
+        <p class="research-statement">My work connects <strong>agent reliability</strong> with <strong>embodied perception</strong>: how systems make decisions, preserve context, and can be evaluated under controlled conditions.</p>
+        <div class="research-list">{researchAreas.map((area) => <article><span>{area.index}</span><div><h3>{area.title}</h3><p>{area.description}</p></div></article>)}</div>
+        <a class="section-link" href="/research/">Research overview</a>
+      </div>
     </section>
 
-    <section class="divided-section">
-      <div class="section-head"><h2>Projects <span class="count">03</span></h2><a class="text-link" href="/projects/">View all</a></div>
-      <div class="project-grid">{projects.map((project) => <ProjectCard id={project.id} {...project.data} />)}</div>
+    <section class="home-section publication-section">
+      <div class="section-label"><span>03</span><h2>Selected Publications</h2></div>
+      <div><PublicationList /><a class="section-link" href={profile.links.scholar} target="_blank" rel="noreferrer">Complete list on Google Scholar</a></div>
     </section>
 
-    <section class="divided-section">
-      <div class="section-head"><h2>Education & Experience <span class="count">04</span></h2><a class="text-link" href="/cv/">Full CV</a></div>
-      <div class="affiliation-grid">
+    <section class="home-section career-section">
+      <div class="section-label"><span>04</span><h2>Education & Experience</h2></div>
+      <div><div class="affiliation-grid">
         <article class="affiliation-card">
           <img src="/images/institutions/ustc.png" alt="University of Science and Technology of China emblem" />
           <div><time>2026 — 2029</time><h3>University of Science and Technology of China</h3><p>M.S. in Cyberspace Security, focusing on large language model security and reliable agents.</p></div>
@@ -73,7 +68,7 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
           <img class="wordmark" src="/images/institutions/zte.jpg" alt="ZTE logo" />
           <div><time>2024.07 — 2024.08</time><h3>ZTE Chengdu · Software Development Intern</h3><p>Built an automated kernel-configuration inspection tool, reducing a 30-minute review to about 5 minutes with over 98% accuracy.</p></div>
         </article>
-      </div>
+      </div><a class="section-link" href="/cv/">Full curriculum vitae</a></div>
     </section>
   </div>
 </BaseLayout>

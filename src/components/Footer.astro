@@ -7,9 +7,9 @@ import { profile } from '../data/site';
     <p>© {new Date().getFullYear()} Haotian Chen</p>
     <div class="footer-links" aria-label="Contact links">
       <a href={`mailto:${profile.email}`}>Email</a>
-      <a href="https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+Haotian" target="_blank" rel="noreferrer">arXiv</a>
-      <span title="Add your GitHub profile URL">GitHub · pending</span>
-      <span title="Add your Google Scholar profile URL">Scholar · pending</span>
+      <a href={profile.links.arxiv} target="_blank" rel="noreferrer">arXiv</a>
+      <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
     </div>
   </div>
 </footer>

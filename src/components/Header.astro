@@ -1,4 +1,5 @@
 ---
+import { profile } from '../data/site';
 const path = Astro.url.pathname;
 const items = [
   ['Home', '/'],
@@ -11,12 +12,13 @@ const items = [
 
 <header class="site-header">
   <nav class="shell nav" aria-label="Primary navigation">
-    <a class="brand" href="/">Haotian Chen</a>
+    <a class="brand" href="/"><span>Haotian Chen</span><small>Research</small></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
     <div class="nav-links" id="site-menu" data-open="false">
       {items.map(([label, href]) => (
         <a href={href} aria-current={path === href || (href !== '/' && path.startsWith(href)) ? 'page' : undefined}>{label}</a>
       ))}
+      <a class="nav-external" href={profile.links.scholar} target="_blank" rel="noreferrer">Scholar</a>
     </div>
   </nav>
 </header>

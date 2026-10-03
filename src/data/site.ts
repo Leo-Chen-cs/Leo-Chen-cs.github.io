@@ -3,6 +3,11 @@ export const profile = {
   role: 'M.S. Student in Cyberspace Security',
   institution: 'University of Science and Technology of China',
   email: 'cht@my.swjtu.edu.cn',
+  links: {
+    scholar: 'https://scholar.google.com/citations?user=F_D2Ea4AAAAJ&hl=en',
+    github: 'https://github.com/Leo-Chen-cs',
+    arxiv: 'https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+Haotian',
+  },
   intro:
     'My research explores how LLM-based agents can develop persistent memory, personalized behavior, and grounded interactions within complex social and 3D environments.',
 };
