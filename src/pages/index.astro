@@ -9,80 +9,57 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
 ---
 
 <BaseLayout>
-  <section class="hero">
-    <div class="shell hero-grid">
-      <div>
-        <p class="eyebrow">Researcher · AI systems</p>
-        <h1 class="hero-name">{profile.name}</h1>
-        <p class="hero-role">{profile.role}</p>
-        <p class="hero-institution">{profile.institution}</p>
-        <p class="lede hero-copy">{profile.intro}</p>
-        <div class="button-row">
-          <a class="button primary" href="/cv/">View CV</a>
-          <a class="button" href={`mailto:${profile.email}`}>Email</a>
-          <span class="button muted" aria-label="GitHub link not added yet">GitHub · add link</span>
+  <div class="site-shell home">
+    <section class="home-top">
+      <aside class="profile-block">
+        <img class="profile-avatar" src="/images/haotian-chen-life.jpg" alt="Portrait of Haotian Chen" width="900" height="900" />
+        <div class="profile-name"><h1>{profile.name}</h1><span class="cn-name">陈皓天</span></div>
+        <p class="profile-role">{profile.role}<br />{profile.institution}</p>
+        <div class="contact-block">
+          <a class="contact-link" href={`mailto:${profile.email}`}>Email</a>
+          <a class="contact-link" href="/cv/haotian-chen-cv.pdf" download>Curriculum Vitae</a>
+          <a class="contact-link" href="https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+Haotian" target="_blank" rel="noreferrer">arXiv profile</a>
+          <span class="contact-link muted">GitHub · add link</span>
         </div>
-        <div class="focus-list" aria-label="Research interests">
-          <span>LLM Agents</span><span>Memory</span><span>Social Simulation</span><span>3D Intelligence</span>
-        </div>
-      </div>
-      <figure class="portrait-frame">
-        <img src="/images/haotian-chen.jpg" alt="Portrait of Haotian Chen" width="591" height="827" />
-      </figure>
-    </div>
-  </section>
+        <p class="profile-note">Agents should not only sound plausible — they should remember, act, and remain auditable.</p>
+      </aside>
 
-  <section class="band white" id="research">
-    <div class="shell">
-      <div class="section-head">
-        <div><p class="eyebrow section-kicker">Research agenda</p><h2>Questions I work on</h2></div>
-        <p>From agent memory to executable environments, I study how intelligent systems can remain coherent, grounded, and testable over time.</p>
+      <div class="about-section">
+        <h2>About</h2>
+        <p>I am an M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>. My work sits at the intersection of large language model agents, memory systems, social simulation, and embodied intelligence.</p>
+        <p>{profile.intro}</p>
+        <p>Previously, I studied Computer Science and Technology at <strong>Southwest Jiaotong University</strong> and worked as a research intern at the Institute for AI Industry Research, Tsinghua University.</p>
+        <p class="interests-label">Research interests</p>
+        <ul class="interest-list">
+          <li><strong>LLM agents</strong> — execution semantics, evaluation, and reliable interaction</li>
+          <li><strong>Memory & personalization</strong> — selective retrieval, updating, and behavioral consistency</li>
+          <li><strong>Social simulation</strong> — grounded actions and traceable world-state transitions</li>
+          <li><strong>3D intelligence</strong> — multimodal understanding, generation, and spatial evaluation</li>
+        </ul>
       </div>
-      <div class="area-grid">
-        {researchAreas.map((area) => (
-          <article class="area-card"><span class="number">{area.index}</span><h3>{area.title}</h3><p>{area.description}</p></article>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="band">
-    <div class="shell">
-      <div class="section-head">
-        <div><p class="eyebrow section-kicker">Selected work</p><h2>Publications</h2></div>
-        <a class="text-link" href="/research/">Research details</a>
-      </div>
+    <section class="divided-section" id="research">
+      <div class="section-head"><h2>Research <span class="count">04</span></h2><a class="text-link" href="/research/">View research page</a></div>
+      <div class="area-grid">{researchAreas.map((area) => <article class="area-card"><span class="number">{area.index}</span><h3>{area.title}</h3><p>{area.description}</p></article>)}</div>
+    </section>
+
+    <section class="divided-section">
+      <div class="section-head"><h2>Publications <span class="count">04</span></h2><span>Selected research outputs</span></div>
       <PublicationList />
-    </div>
-  </section>
+    </section>
 
-  <section class="band white">
-    <div class="shell">
-      <div class="section-head">
-        <div><p class="eyebrow section-kicker">In progress</p><h2>Selected projects</h2></div>
-        <a class="text-link" href="/projects/">All projects</a>
-      </div>
-      <div class="project-grid">
-        {projects.map((project) => <ProjectCard id={project.id} {...project.data} />)}
-      </div>
-    </div>
-  </section>
+    <section class="divided-section">
+      <div class="section-head"><h2>Projects <span class="count">03</span></h2><a class="text-link" href="/projects/">View all</a></div>
+      <div class="project-grid">{projects.map((project) => <ProjectCard id={project.id} {...project.data} />)}</div>
+    </section>
 
-  <section class="band">
-    <div class="shell content-grid">
-      <div><p class="side-label">Experience</p></div>
+    <section class="divided-section home-experience">
+      <div><h2>Experience</h2></div>
       <div class="timeline">
-        <article class="timeline-item">
-          <time>Jul 2024 — Apr 2025</time>
-          <h3>Research Intern · Institute for AI Industry Research, Tsinghua University</h3>
-          <p>Worked on research in computer vision and artificial intelligence, including robot target recognition and autonomous navigation.</p>
-        </article>
-        <article class="timeline-item">
-          <time>Jul 2024 — Aug 2024</time>
-          <h3>Software Development Intern · ZTE, Chengdu</h3>
-          <p>Developed an automated kernel-configuration inspection tool for the operating-system product team.</p>
-        </article>
+        <article class="timeline-item"><time>2024.07 — 2025.04</time><div><h3>Research Intern · Institute for AI Industry Research, Tsinghua University</h3><p>Computer vision and artificial intelligence research, including robot target recognition and autonomous navigation.</p></div></article>
+        <article class="timeline-item"><time>2024.07 — 2024.08</time><div><h3>Software Development Intern · ZTE, Chengdu</h3><p>Developed an automated kernel-configuration inspection tool for the operating-system product team.</p></div></article>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </BaseLayout>

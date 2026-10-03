@@ -6,15 +6,19 @@ const items = typeof limit === 'number' ? publications.slice(0, limit) : publica
 ---
 
 <div class="pub-list">
-  {items.map((paper) => (
+  {items.map((paper, index) => (
     <article class="publication">
-      <div class="pub-year">{paper.year}</div>
+      <a class="publication-figure" href={paper.href} target="_blank" rel="noreferrer" aria-label={`Open ${paper.title}`}>
+        <span class="figure-index">PAPER · {String(index + 1).padStart(2, '0')}</span>
+        <span class="figure-title">{paper.title}</span>
+        <span class="figure-year">{paper.year}</span>
+      </a>
       <div>
         <h3><a href={paper.href} target="_blank" rel="noreferrer">{paper.title}</a></h3>
         <p class="pub-authors">{paper.authors}</p>
         <p class="pub-summary">{paper.summary}</p>
+        <div class="pub-meta"><strong>{paper.note}</strong><span>{paper.venue}</span><a class="text-link" href={paper.href} target="_blank" rel="noreferrer">Paper</a></div>
       </div>
-      <div class="pub-meta"><strong>{paper.note}</strong>{paper.venue}</div>
     </article>
   ))}
 </div>
