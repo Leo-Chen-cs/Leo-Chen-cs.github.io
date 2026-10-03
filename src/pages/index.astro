@@ -5,7 +5,7 @@ import { profile, researchAreas } from '../data/site';
 
 const updates = [
   { date: 'Oct 2026', text: 'Released two new studies on evaluation design and action settlement in intelligent-agent environments.' },
-  { date: '2026', text: 'Joining the University of Science and Technology of China for an M.S. in Cyberspace Security.' },
+  { date: '2026', text: 'Studying toward an M.S. in Cyberspace Security at the University of Science and Technology of China.' },
   { date: '2025', text: 'DPNet was published in IEEE Internet of Things Journal.' },
 ];
 ---
@@ -17,9 +17,9 @@ const updates = [
       <div class="hero-copy">
         <p class="eyebrow">LLM Agents · Reliable AI · Computer Vision</p>
         <div class="hero-name"><h1>{profile.name}</h1><span>陈皓天</span></div>
-        <p class="hero-role">Incoming M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>.</p>
+        <p class="hero-role">M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>.</p>
         <p class="hero-bio">I study how intelligent agents can remember, act, and remain auditable in complex environments. My current interests span reliable LLM-agent evaluation, long-term memory and personalization, social simulation, and embodied intelligence.</p>
-        <p class="hero-bio">Previously, I studied Computer Science at <strong>Southwest Jiaotong University</strong>, conducted research at <strong>Tsinghua AIR</strong>, and worked with the operating-system product team at <strong>ZTE</strong>.</p>
+        <p class="hero-bio">Previously, I completed a dual-degree undergraduate programme in Computer Science at the <strong>Southwest Jiaotong University–Leeds Joint School</strong>, with degrees awarded by <strong>Southwest Jiaotong University</strong> and the <strong>University of Leeds</strong>. I also conducted research at <strong>Tsinghua AIR</strong> and worked with the operating-system product team at <strong>ZTE</strong>.</p>
         <div class="hero-links" aria-label="Profile links">
           <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
           <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
@@ -56,9 +56,12 @@ const updates = [
           <img src="/images/institutions/ustc.png" alt="University of Science and Technology of China emblem" />
           <div><time>2026 — 2029</time><h3>University of Science and Technology of China</h3><p>M.S. in Cyberspace Security, focusing on large language model security and reliable agents.</p></div>
         </article>
-        <article class="affiliation-card">
-          <img src="/images/institutions/swjtu.png" alt="Southwest Jiaotong University emblem" />
-          <div><time>2022 — 2026</time><h3>Southwest Jiaotong University</h3><p>B.Eng. in Computer Science and Technology. Average 91.23; ranked 8 / 82.</p></div>
+        <article class="affiliation-card has-pair">
+          <div class="institution-pair" aria-label="Southwest Jiaotong University and University of Leeds">
+            <img src="/images/institutions/swjtu.png" alt="Southwest Jiaotong University emblem" />
+            <img class="leeds-wordmark" src="/images/institutions/leeds.svg" alt="University of Leeds logo" />
+          </div>
+          <div><time>2022 — 2026</time><h3>Southwest Jiaotong University–Leeds Joint School</h3><p>Dual-degree undergraduate programme in Computer Science, with degrees awarded by Southwest Jiaotong University and the University of Leeds. Average 91.23; ranked 8 / 82.</p></div>
         </article>
         <article class="affiliation-card">
           <img src="/images/institutions/tsinghua.jpg" alt="Tsinghua University emblem" />

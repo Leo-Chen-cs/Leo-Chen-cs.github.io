@@ -140,6 +140,10 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .affiliation-card { min-height: 176px; display: grid; grid-template-columns: 62px minmax(0,1fr); gap: 16px; align-items: start; padding: 21px; border: 1px solid var(--rule); border-radius: 8px; background: #fff; box-shadow: 0 5px 22px rgba(22,44,72,.035); }
 .affiliation-card img { width: 58px; height: 58px; object-fit: contain; mix-blend-mode: multiply; }
 .affiliation-card img.wordmark { border-radius: 12px; }
+.affiliation-card.has-pair { grid-template-columns: 78px minmax(0,1fr); }
+.institution-pair { width: 74px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.institution-pair img:first-child { width: 46px; height: 46px; object-fit: contain; }
+.institution-pair img.leeds-wordmark { width: 74px; height: auto; object-fit: contain; }
 .affiliation-card time { color: #8a8d80; font: 10px/1.4 SFMono-Regular, Consolas, monospace; }
 .affiliation-card h3 { margin-top: 8px; font-size: .91rem; font-weight: 600; }
 .affiliation-card p { margin-top: 7px; color: var(--muted); font-size: .76rem; line-height: 1.65; }
@@ -169,6 +173,8 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .cv-item.branded { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 14px; align-items: start; }
 .cv-item.branded > img { width: 46px; height: 46px; object-fit: contain; mix-blend-mode: multiply; }
 .cv-item.branded > img.wordmark { border-radius: 10px; }
+.cv-item.branded.paired { grid-template-columns: 80px minmax(0,1fr); }
+.cv-item.branded > .institution-pair { width: 74px; }
 .cv-item-head { display: flex; justify-content: space-between; gap: 1rem; }
 .cv-item-head h3 { font-weight: 500; }
 .cv-item p, .cv-item li { color: var(--muted); font-size: .8rem; }
