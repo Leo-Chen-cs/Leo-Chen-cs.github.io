@@ -28,7 +28,7 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
         <h2>About</h2>
         <p>I am an M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>. My work sits at the intersection of large language model agents, memory systems, social simulation, and embodied intelligence.</p>
         <p>{profile.intro}</p>
-        <p>Previously, I studied Computer Science and Technology at <strong>Southwest Jiaotong University</strong> and worked as a research intern at the Institute for AI Industry Research, Tsinghua University.</p>
+        <p>Previously, I studied Computer Science and Technology at <strong>Southwest Jiaotong University</strong>. I also collaborated with the <strong>Institute for AI Industry Research (AIR), Tsinghua University</strong> as a research intern and worked with the operating-system product team at <strong>ZTE</strong>.</p>
         <p class="interests-label">Research interests</p>
         <ul class="interest-list">
           <li><strong>LLM agents</strong> — execution semantics, evaluation, and reliable interaction</li>
@@ -54,11 +54,25 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
       <div class="project-grid">{projects.map((project) => <ProjectCard id={project.id} {...project.data} />)}</div>
     </section>
 
-    <section class="divided-section home-experience">
-      <div><h2>Experience</h2></div>
-      <div class="timeline">
-        <article class="timeline-item"><time>2024.07 — 2025.04</time><div><h3>Research Intern · Institute for AI Industry Research, Tsinghua University</h3><p>Computer vision and artificial intelligence research, including robot target recognition and autonomous navigation.</p></div></article>
-        <article class="timeline-item"><time>2024.07 — 2024.08</time><div><h3>Software Development Intern · ZTE, Chengdu</h3><p>Developed an automated kernel-configuration inspection tool for the operating-system product team.</p></div></article>
+    <section class="divided-section">
+      <div class="section-head"><h2>Education & Experience <span class="count">04</span></h2><a class="text-link" href="/cv/">Full CV</a></div>
+      <div class="affiliation-grid">
+        <article class="affiliation-card">
+          <img src="/images/institutions/ustc.png" alt="University of Science and Technology of China emblem" />
+          <div><time>2026 — 2029</time><h3>University of Science and Technology of China</h3><p>M.S. in Cyberspace Security, focusing on large language model security and reliable agents.</p></div>
+        </article>
+        <article class="affiliation-card">
+          <img src="/images/institutions/swjtu.png" alt="Southwest Jiaotong University emblem" />
+          <div><time>2022 — 2026</time><h3>Southwest Jiaotong University</h3><p>B.Eng. in Computer Science and Technology. Average 91.23; ranked 8 / 82.</p></div>
+        </article>
+        <article class="affiliation-card">
+          <img src="/images/institutions/tsinghua.jpg" alt="Tsinghua University emblem" />
+          <div><time>2024.07 — 2025.04</time><h3>Tsinghua AIR · Research Intern</h3><p>Collaborated on computer vision and AI research for robot target recognition and autonomous navigation.</p></div>
+        </article>
+        <article class="affiliation-card">
+          <img class="wordmark" src="/images/institutions/zte.jpg" alt="ZTE logo" />
+          <div><time>2024.07 — 2024.08</time><h3>ZTE Chengdu · Software Development Intern</h3><p>Built an automated kernel-configuration inspection tool, reducing a 30-minute review to about 5 minutes with over 98% accuracy.</p></div>
+        </article>
       </div>
     </section>
   </div>
