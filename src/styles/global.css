@@ -53,7 +53,7 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .academic-hero { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 62px; align-items: start; padding-bottom: 66px; }
 .portrait-wrap { position: relative; }
 .portrait-wrap::before { content: ""; position: absolute; inset: 12px -12px -12px 12px; border-radius: 20px; background: #e7eef7; }
-.hero-portrait { position: relative; width: 250px; aspect-ratio: 1; object-fit: cover; object-position: 50% 35%; border-radius: 20px; border: 1px solid #d8e0e9; }
+.hero-portrait { position: relative; width: 250px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 46%; border-radius: 20px; border: 1px solid #d8e0e9; }
 .hero-copy { padding-top: 5px; }
 .hero-copy .eyebrow { margin-bottom: 14px; color: var(--accent); font-size: .7rem; }
 .hero-name { display: flex; align-items: baseline; gap: 18px; }
@@ -62,7 +62,8 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .hero-role { max-width: 760px; margin-top: 20px; color: #35445a; font-size: 1.05rem; line-height: 1.65; }
 .hero-bio { max-width: 770px; margin-top: 14px; color: var(--muted); font-size: .96rem; line-height: 1.78; }
 .hero-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
-.hero-links a { display: inline-flex; align-items: center; min-height: 36px; padding: .38rem .78rem; border: 1px solid #d5dee9; border-radius: 6px; background: #fff; color: #2b486f; font-size: .78rem; font-weight: 500; transition: border-color .2s, color .2s, transform .2s; }
+.hero-links a { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: .38rem .78rem; border: 1px solid #d5dee9; border-radius: 6px; background: #fff; color: #2b486f; font-size: .78rem; font-weight: 500; transition: border-color .2s, color .2s, transform .2s; }
+.profile-icon { width: 15px; height: 15px; flex: 0 0 15px; }
 .hero-links a:hover { border-color: #90a9c6; color: var(--accent-dark); transform: translateY(-1px); }
 .home-section { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 48px; padding: 52px 0; border-top: 1px solid var(--rule); }
 .section-label { position: relative; }

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationList from '../components/PublicationList.astro';
+import ProfileIcon from '../components/ProfileIcon.astro';
 import { profile, researchAreas } from '../data/site';
 
 const updates = [
@@ -13,19 +14,19 @@ const updates = [
 <BaseLayout>
   <div class="site-shell home academic-home">
     <section class="academic-hero">
-      <div class="portrait-wrap"><img class="hero-portrait" src="/images/haotian-chen-life.jpg" alt="Portrait of Haotian Chen" width="900" height="900" /></div>
+      <div class="portrait-wrap"><img class="hero-portrait" src="/images/haotian-chen-portrait.jpg" alt="Portrait of Haotian Chen" width="899" height="1600" /></div>
       <div class="hero-copy">
         <p class="eyebrow">LLM Agents · Reliable AI · Computer Vision</p>
         <div class="hero-name"><h1>{profile.name}</h1><span>陈皓天</span></div>
         <p class="hero-role">M.S. student in Cyberspace Security at the <strong>University of Science and Technology of China</strong>.</p>
-        <p class="hero-bio">I study how intelligent agents can remember, act, and remain auditable in complex environments. My current interests span reliable LLM-agent evaluation, long-term memory and personalization, social simulation, and embodied intelligence.</p>
+        <p class="hero-bio">I study how learning-based agents can perceive, remember, and act reliably in open-ended environments. My work develops evaluation protocols and system mechanisms for auditable action execution, persistent memory, and grounded multimodal reasoning.</p>
         <p class="hero-bio">Previously, I completed a dual-degree undergraduate programme in Computer Science at the <strong>Southwest Jiaotong University–Leeds Joint School</strong>, with degrees awarded by <strong>Southwest Jiaotong University</strong> and the <strong>University of Leeds</strong>. I also conducted research at <strong>Tsinghua AIR</strong> and worked with the operating-system product team at <strong>ZTE</strong>.</p>
         <div class="hero-links" aria-label="Profile links">
-          <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
-          <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={profile.links.arxiv} target="_blank" rel="noreferrer">arXiv</a>
-          <a href="/cv/haotian-chen-cv.pdf" download>CV</a>
-          <a href={`mailto:${profile.email}`}>Email</a>
+          <a href={profile.links.scholar} target="_blank" rel="noreferrer"><ProfileIcon name="scholar" />Google Scholar</a>
+          <a href={profile.links.github} target="_blank" rel="noreferrer"><ProfileIcon name="github" />GitHub</a>
+          <a href={profile.links.arxiv} target="_blank" rel="noreferrer"><ProfileIcon name="arxiv" />arXiv</a>
+          <a href="/cv/haotian-chen-cv.pdf" download><ProfileIcon name="cv" />CV</a>
+          <a href={`mailto:${profile.email}`}><ProfileIcon name="email" />Email</a>
         </div>
       </div>
     </section>
@@ -38,7 +39,7 @@ const updates = [
     <section class="home-section research-section" id="research">
       <div class="section-label"><span>02</span><h2>Research</h2></div>
       <div>
-        <p class="research-statement">My work connects <strong>agent reliability</strong> with <strong>embodied perception</strong>: how systems make decisions, preserve context, and can be evaluated under controlled conditions.</p>
+        <p class="research-statement">My research asks how intelligent agents can remain <strong>reliable, auditable, and adaptive</strong> when decisions unfold over long horizons, under partial observability, and through interaction with users and environments.</p>
         <div class="research-list">{researchAreas.map((area) => <article><span>{area.index}</span><div><h3>{area.title}</h3><p>{area.description}</p></div></article>)}</div>
         <a class="section-link" href="/research/">Research overview</a>
       </div>

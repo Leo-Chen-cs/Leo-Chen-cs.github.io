@@ -5,7 +5,7 @@ import { researchAreas } from '../data/site';
 ---
 
 <BaseLayout title="Research · Haotian Chen" description="Research directions and publications by Haotian Chen.">
-  <header class="page-hero"><div class="shell"><p class="eyebrow">Research</p><h1>Building agents that remain coherent.</h1><p class="lede">I am interested in the mechanisms and evaluation protocols that make model behavior persistent, grounded, and reproducible across long interactions.</p></div></header>
+  <header class="page-hero"><div class="shell"><p class="eyebrow">Research</p><h1>Reliable agents for open-ended environments.</h1><p class="lede">I investigate the evaluation principles and system mechanisms that make intelligent agents auditable, adaptive, and grounded across long-horizon interactions. My work spans action execution, persistent memory, multi-agent simulation, and multimodal embodied reasoning.</p></div></header>
   <section class="band white"><div class="shell"><div class="area-grid">{researchAreas.map((area) => <article class="area-card"><span class="number">{area.index}</span><h3>{area.title}</h3><p>{area.description}</p></article>)}</div></div></section>
   <section class="band"><div class="shell"><div class="section-head"><div><p class="eyebrow section-kicker">Publications</p><h2>Research outputs</h2></div><p>Paper links lead to the corresponding arXiv records or publisher pages.</p></div><PublicationList /></div></section>
 </BaseLayout>

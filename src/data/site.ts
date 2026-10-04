@@ -15,23 +15,23 @@ export const profile = {
 export const researchAreas = [
   {
     index: '01',
-    title: 'LLM Agents',
-    description: 'Autonomous and interactive agents powered by large language models, with an emphasis on reliable execution and evaluation.',
+    title: 'Reliable & Auditable LLM Agents',
+    description: 'Evaluation and control for tool-using and multi-agent systems, with an emphasis on action semantics, order sensitivity, progress attribution, replayability, and failure diagnosis.',
   },
   {
     index: '02',
-    title: 'Memory & Personalization',
-    description: 'Long-term memory, memory updating, selective retrieval, persona consistency, and personalized agent behavior.',
+    title: 'Long-Term Memory & Personalization',
+    description: 'Mechanisms for agents to acquire, update, retrieve, and forget long-term memories while preserving user preferences, temporal consistency, and controllable behavior.',
   },
   {
     index: '03',
-    title: 'Social Simulation',
-    description: 'Executable social environments where generated behaviors are grounded in consistent, traceable world-state transitions.',
+    title: 'Multi-Agent & Social Simulation',
+    description: 'Executable environments for studying coordination, interaction, and emergent behavior through traceable world-state transitions and reproducible counterfactual experiments.',
   },
   {
     index: '04',
-    title: '3D Intelligence',
-    description: 'Multimodal models for structured 3D scene understanding, generation, reconstruction, and evaluation.',
+    title: 'Embodied & 3D Intelligence',
+    description: 'Multimodal models that connect vision, language, and geometry for tiny-object perception, pose understanding, 3D scene reasoning, and embodied decision-making.',
   },
 ];
 
