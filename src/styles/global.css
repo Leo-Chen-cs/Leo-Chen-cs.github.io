@@ -140,7 +140,8 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .affiliation-card { min-height: 176px; display: grid; grid-template-columns: 62px minmax(0,1fr); gap: 16px; align-items: start; padding: 21px; border: 1px solid var(--rule); border-radius: 8px; background: #fff; box-shadow: 0 5px 22px rgba(22,44,72,.035); }
 .affiliation-card img { width: 58px; height: 58px; object-fit: contain; mix-blend-mode: multiply; }
 .affiliation-card img.wordmark { border-radius: 12px; }
-.affiliation-card img.wide-wordmark { width: 62px; height: 42px; margin-top: 7px; }
+.affiliation-card.wide-logo-card { grid-template-columns: 112px minmax(0,1fr); gap: 18px; }
+.affiliation-card img.wide-wordmark { width: 108px; height: 52px; margin-top: 3px; }
 .affiliation-card time { color: #8a8d80; font: 10px/1.4 SFMono-Regular, Consolas, monospace; }
 .affiliation-card h3 { margin-top: 8px; font-size: .91rem; font-weight: 600; }
 .affiliation-card p { margin-top: 7px; color: var(--muted); font-size: .76rem; line-height: 1.65; }
@@ -170,7 +171,8 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .cv-item.branded { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 14px; align-items: start; }
 .cv-item.branded > img { width: 46px; height: 46px; object-fit: contain; mix-blend-mode: multiply; }
 .cv-item.branded > img.wordmark { border-radius: 10px; }
-.cv-item.branded > img.wide-wordmark { width: 48px; height: 34px; margin-top: 6px; }
+.cv-item.branded.wide-logo-item { grid-template-columns: 104px minmax(0,1fr); gap: 16px; }
+.cv-item.branded > img.wide-wordmark { width: 100px; height: 48px; margin-top: 2px; }
 .cv-item-head { display: flex; justify-content: space-between; gap: 1rem; }
 .cv-item-head h3 { font-weight: 500; }
 .cv-item p, .cv-item li { color: var(--muted); font-size: .8rem; }
@@ -247,10 +249,14 @@ h3 { font-size: 1rem; line-height: 1.45; }
   .pub-list { gap: 32px; }
   .project-grid { grid-template-columns: 1fr; }
   .affiliation-grid { grid-template-columns: 1fr; }
+  .affiliation-card.wide-logo-card { grid-template-columns: 96px minmax(0,1fr); gap: 15px; }
+  .affiliation-card img.wide-wordmark { width: 92px; height: 46px; }
   .home-experience, .content-grid, .cv-section { grid-template-columns: 1fr; gap: 1rem; }
   .timeline-item { grid-template-columns: 1fr; gap: 4px; }
   .page-hero { padding: 2.4rem 0 1.8rem; }
   .cv-item-head { display: block; }
+  .cv-item.branded.wide-logo-item { grid-template-columns: 94px minmax(0,1fr); gap: 14px; }
+  .cv-item.branded > img.wide-wordmark { width: 90px; height: 44px; }
   .site-footer { margin-top: 50px; padding-left: 20px; padding-right: 20px; align-items: flex-start; flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) {
