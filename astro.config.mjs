@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: process.env.SITE_URL ?? 'https://haotian-chen-research.haotianchen06.chatgpt.site',
+  site: process.env.SITE_URL ?? 'https://htchen.com',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
