@@ -16,7 +16,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-language="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -31,11 +31,72 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <title>{title}</title>
+    <script is:inline>
+      try {
+        const savedLanguage = localStorage.getItem('htchen-language');
+        if (savedLanguage === 'zh') {
+          document.documentElement.dataset.language = 'zh';
+          document.documentElement.lang = 'zh-CN';
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
     <Header />
     <main id="main"><slot /></main>
     <Footer />
+    <script>
+      import { chineseTranslations } from '../data/translations';
+
+      const originalText = new WeakMap<Text, string>();
+      const blockedTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'NOSCRIPT']);
+
+      function translateNode(node: Text, language: 'en' | 'zh') {
+        const parent = node.parentElement;
+        if (!parent || blockedTags.has(parent.tagName) || parent.closest('[data-no-translate]')) return;
+        const source = originalText.get(node) ?? node.nodeValue ?? '';
+        if (!originalText.has(node)) originalText.set(node, source);
+        const trimmed = source.trim();
+        if (!trimmed || !chineseTranslations[trimmed]) {
+          if (language === 'en') node.nodeValue = source;
+          return;
+        }
+        const start = source.indexOf(trimmed);
+        const prefix = source.slice(0, start);
+        const suffix = source.slice(start + trimmed.length);
+        node.nodeValue = language === 'zh' ? `${prefix}${chineseTranslations[trimmed]}${suffix}` : source;
+      }
+
+      function applyLanguage(language: 'en' | 'zh') {
+        document.documentElement.dataset.language = language;
+        document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let current = walker.nextNode();
+        while (current) {
+          translateNode(current as Text, language);
+          current = walker.nextNode();
+        }
+        const titleSource = document.documentElement.dataset.originalTitle ?? document.title;
+        document.documentElement.dataset.originalTitle = titleSource;
+        document.title = language === 'zh' ? (chineseTranslations[titleSource] ?? titleSource) : titleSource;
+        document.querySelectorAll<HTMLButtonElement>('[data-language-toggle]').forEach((button) => {
+          button.textContent = language === 'zh' ? 'EN' : '中文';
+          button.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换为中文');
+        });
+        document.querySelectorAll<HTMLElement>('[data-terminal-punctuation]').forEach((mark) => {
+          mark.textContent = language === 'zh' ? '。' : '.';
+        });
+        try { localStorage.setItem('htchen-language', language); } catch {}
+      }
+
+      const initialLanguage = document.documentElement.dataset.language === 'zh' ? 'zh' : 'en';
+      applyLanguage(initialLanguage);
+      document.querySelectorAll<HTMLButtonElement>('[data-language-toggle]').forEach((button) => {
+        button.addEventListener('click', () => {
+          applyLanguage(document.documentElement.dataset.language === 'zh' ? 'en' : 'zh');
+        });
+      });
+    </script>
   </body>
 </html>

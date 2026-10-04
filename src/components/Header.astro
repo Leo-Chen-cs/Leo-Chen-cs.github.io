@@ -18,6 +18,7 @@ const items = [
       {items.map(([label, href]) => (
         <a href={href} aria-current={path === href || (href !== '/' && path.startsWith(href)) ? 'page' : undefined}>{label}</a>
       ))}
+      <button class="language-toggle" type="button" data-language-toggle aria-label="切换为中文">中文</button>
       <a class="nav-external" href={profile.links.scholar} target="_blank" rel="noreferrer">Scholar</a>
     </div>
   </nav>

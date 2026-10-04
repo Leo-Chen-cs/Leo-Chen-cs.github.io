@@ -2,7 +2,7 @@ export const profile = {
   name: 'Haotian Chen',
   role: 'M.S. Student in Cyberspace Security',
   institution: 'University of Science and Technology of China',
-  email: 'cht@my.swjtu.edu.cn',
+  email: 'htchen@mail.ustc.edu.cn',
   links: {
     scholar: 'https://scholar.google.com/citations?user=F_D2Ea4AAAAJ&hl=en',
     github: 'https://github.com/Leo-Chen-cs',

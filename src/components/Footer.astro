@@ -4,7 +4,14 @@ import { profile } from '../data/site';
 
 <footer class="site-footer">
   <div class="shell footer-inner">
-    <p>© {new Date().getFullYear()} Haotian Chen</p>
+    <div class="footer-meta">
+      <p>© {new Date().getFullYear()} Haotian Chen</p>
+      <p class="visitor-count" title="Total page views">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.4-6 9.8-6 9.8 6 9.8 6-3.4 6-9.8 6-9.8-6-9.8-6Z"/><circle cx="12" cy="12" r="2.7"/></svg>
+        <span>Views</span>
+        <span id="busuanzi_site_pv" aria-live="polite">—</span>
+      </p>
+    </div>
     <div class="footer-links" aria-label="Contact links">
       <a href={`mailto:${profile.email}`}>Email</a>
       <a href={profile.links.arxiv} target="_blank" rel="noreferrer">arXiv</a>
@@ -13,3 +20,5 @@ import { profile } from '../data/site';
     </div>
   </div>
 </footer>
+
+<script is:inline defer src="https://cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.abbr.min.js"></script>
