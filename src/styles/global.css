@@ -146,8 +146,8 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .affiliation-card img.wordmark { border-radius: 12px; }
 .affiliation-card.wide-logo-card { grid-template-columns: 112px minmax(0,1fr); gap: 18px; }
 .affiliation-card img.wide-wordmark { width: 108px; height: 52px; margin-top: 3px; }
-.affiliation-card.crest-card { grid-template-columns: 76px minmax(0,1fr); gap: 18px; }
-.affiliation-card img.crest-mark { width: 72px; height: 72px; margin-top: -5px; }
+.affiliation-card.crest-card { grid-template-columns: 62px minmax(0,1fr); gap: 16px; }
+.affiliation-card img.crest-mark { width: 58px; height: 70px; margin: 0; object-fit: contain; object-position: center top; mix-blend-mode: normal; }
 .affiliation-card time { color: #8a8d80; font: 10px/1.4 SFMono-Regular, Consolas, monospace; }
 .affiliation-card h3 { margin-top: 8px; font-size: .91rem; font-weight: 600; }
 .affiliation-card p { margin-top: 7px; color: var(--muted); font-size: .76rem; line-height: 1.65; }
@@ -181,8 +181,8 @@ h3 { font-size: 1rem; line-height: 1.45; }
 .cv-item.branded > img.wordmark { border-radius: 10px; }
 .cv-item.branded.wide-logo-item { grid-template-columns: 104px minmax(0,1fr); gap: 16px; }
 .cv-item.branded > img.wide-wordmark { width: 100px; height: 48px; margin-top: 2px; }
-.cv-item.branded.crest-item { grid-template-columns: 64px minmax(0,1fr); gap: 16px; }
-.cv-item.branded > img.crest-mark { width: 60px; height: 64px; margin-top: -7px; }
+.cv-item.branded.crest-item { grid-template-columns: 48px minmax(0,1fr); gap: 14px; }
+.cv-item.branded > img.crest-mark { width: 46px; height: 56px; margin: 0; object-fit: contain; object-position: center top; mix-blend-mode: normal; }
 .cv-item-head { display: flex; justify-content: space-between; gap: 1rem; }
 .cv-item-head h3 { font-weight: 500; }
 .cv-item p, .cv-item li { color: var(--muted); font-size: .8rem; }
@@ -266,16 +266,12 @@ h3 { font-size: 1rem; line-height: 1.45; }
   .affiliation-grid { grid-template-columns: 1fr; }
   .affiliation-card.wide-logo-card { grid-template-columns: 96px minmax(0,1fr); gap: 15px; }
   .affiliation-card img.wide-wordmark { width: 92px; height: 46px; }
-  .affiliation-card.crest-card { grid-template-columns: 68px minmax(0,1fr); gap: 16px; }
-  .affiliation-card img.crest-mark { width: 64px; height: 68px; }
   .home-experience, .content-grid, .cv-section { grid-template-columns: 1fr; gap: 1rem; }
   .timeline-item { grid-template-columns: 1fr; gap: 4px; }
   .page-hero { padding: 2.4rem 0 1.8rem; }
   .cv-item-head { display: block; }
   .cv-item.branded.wide-logo-item { grid-template-columns: 94px minmax(0,1fr); gap: 14px; }
   .cv-item.branded > img.wide-wordmark { width: 90px; height: 44px; }
-  .cv-item.branded.crest-item { grid-template-columns: 58px minmax(0,1fr); gap: 14px; }
-  .cv-item.branded > img.crest-mark { width: 54px; height: 58px; }
   .site-footer { margin-top: 50px; }
   .footer-inner { min-height: 96px; padding-top: 18px; padding-bottom: 18px; align-items: flex-start; flex-direction: column; }
   .footer-meta { width: 100%; justify-content: space-between; }
